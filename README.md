@@ -23,4 +23,14 @@ factorisation de rang faible de R. Ceci conduit au problème d'optimisation suiv
 On cherche ainsi le couple de matrices P et Q, de rang fxé, tels que le produit entre P et la
 transposée de Q minimise l'écart aux données R.
 
-le fchier de données ratings.dat doit se trouver dans un répertoire data/ par défaut
+le fchier de données ratings.dat doit se trouver dans le répertoire /hadoop-cluster-docker/data/ 
+
+# Mise en place d'infrastructure de calcul
+
+Le but de cette partie est de concevoir une infrastructure Spark de calcul distribuée, simulée sur
+une ordinateur personnel à l’aide de containers Docker. Un container est utilisé pour exécuter le
+Master de Spark et un ensemble de containers exécutent les Slaves de Spark. Cette infrastructure
+est représentée sur le schéma ci-dessous.
+
+
+

@@ -32,5 +32,11 @@ une ordinateur personnel à l’aide de containers Docker. Un container est util
 Master de Spark et un ensemble de containers exécutent les Slaves de Spark. Cette infrastructure
 est représentée sur le schéma ci-dessous.
 
+![docker](https://user-images.githubusercontent.com/38117821/137381791-40c976be-bb7e-407f-afe4-007ca2f1f333.PNG)
+
+Les Slaves sont enregistrés auprès du Master. Un client (un shell) peut soumettre une application
+Spark pour exécution auprès du Master (avec spark-submit) et le Master distribue cette exécution
+auprès des Slaves.
+
 
 

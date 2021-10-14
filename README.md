@@ -17,3 +17,9 @@ Les données sont stockées sous forme d'un matrice R=[rij] (ligne → utilisate
 entrée de la matrice → note), ce problème peut se modéliser comme la recherche d'une
 factorisation de rang faible de R. Ceci conduit au problème d'optimisation suivant : 
 
+![optimisation](https://user-images.githubusercontent.com/38117821/137370917-eeaed90e-6db2-4073-a90e-028ba6810d9c.PNG)
+
+
+On cherche ainsi le couple de matrices P et Q, de rang fxé, tels que le produit entre P et la
+transposée de Q minimise l'écart aux données R.
+

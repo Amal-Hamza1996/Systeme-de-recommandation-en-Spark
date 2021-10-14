@@ -23,3 +23,4 @@ factorisation de rang faible de R. Ceci conduit au problème d'optimisation suiv
 On cherche ainsi le couple de matrices P et Q, de rang fxé, tels que le produit entre P et la
 transposée de Q minimise l'écart aux données R.
 
+le fchier de données ratings.dat doit se trouver dans un répertoire data/ par défaut

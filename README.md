@@ -1,42 +1,23 @@
-# Objectif du projet
+# Project Objective
 
-L’objectif de ce projet est de concevoir une application Big Data et de la déployer dans une
-infrastructure de calcul. Le projet se compose de deux parties, une relative à la conception d’une application de traitement de
-données, l’autre à la mise en place d’une infrastructure de calcul.
+The goal of this project is to design a Big Data application and deploy it within a computing infrastructure. The project consists of two main parts: one focusing on the design of a data processing application, and the other on setting up the computing infrastructure.
 
-# Conception d'une application Big Data
+# Big Data Application Design
 
-Le but de cette partie est l’implantation et l'évaluation d'une méthode de descente de gradient
-pour la résolution d'un problème de fltrage collaboratif. Nous avons à notre disposition un fchier
-contenant les évaluations d'un certain nombre de flms par différents utilisateurs d'une plateforme.
-Ces utilisateurs n'ayant pas noté, ni même vu, l'ensemble des flms à disposition, l'objectif est de
-pouvoir estimer ces notes « manquantes » depuis l'ensemble de notes, flms et utilisateurs à notre
-disposition.
+The purpose of this part is to implement and evaluate a gradient descent method to solve a collaborative filtering problem. We have a file containing ratings for a number of movies by different users on a platform. Since these users have not rated, or even watched, all the available movies, the goal is to estimate the “missing” ratings from the available ratings, movies, and users.
 
-Les données sont stockées sous forme d'un matrice R=[rij] (ligne → utilisateur, colonne → flm,
-entrée de la matrice → note), ce problème peut se modéliser comme la recherche d'une
-factorisation de rang faible de R. Ceci conduit au problème d'optimisation suivant : 
+The data is stored as a matrix \(R = [r_{ij}]\) (rows → users, columns → movies, matrix entries → ratings). This problem can be modeled as finding a low-rank factorization of \(R\), which leads to the following optimization problem: 
 
-![optimisation](https://user-images.githubusercontent.com/38117821/137370917-eeaed90e-6db2-4073-a90e-028ba6810d9c.PNG)
+![Optimization](https://user-images.githubusercontent.com/38117821/137370917-eeaed90e-6db2-4073-a90e-028ba6810d9c.PNG)
 
+The objective is to find the pair of matrices \(P\) and \(Q\), of fixed rank, such that the product of \(P\) and the transpose of \(Q\) minimizes the difference with the observed data \(R\).
 
-On cherche ainsi le couple de matrices P et Q, de rang fxé, tels que le produit entre P et la
-transposée de Q minimise l'écart aux données R.
+The data file `ratings.dat` must be located in the directory `/hadoop-cluster-docker/data/`.
 
-le fchier de données ratings.dat doit se trouver dans le répertoire /hadoop-cluster-docker/data/ 
+# Computing Infrastructure Setup
 
-# Mise en place d'infrastructure de calcul
+The goal of this part is to design a distributed Spark computing infrastructure, simulated on a personal computer using Docker containers. One container runs the Spark Master, and a set of containers run the Spark Slaves. The infrastructure is represented in the diagram below.
 
-Le but de cette partie est de concevoir une infrastructure Spark de calcul distribuée, simulée sur
-une ordinateur personnel à l’aide de containers Docker. Un container est utilisé pour exécuter le
-Master de Spark et un ensemble de containers exécutent les Slaves de Spark. Cette infrastructure
-est représentée sur le schéma ci-dessous.
+![Docker](https://user-images.githubusercontent.com/38117821/137381791-40c976be-bb7e-407f-afe4-007ca2f1f333.PNG)
 
-![docker](https://user-images.githubusercontent.com/38117821/137381791-40c976be-bb7e-407f-afe4-007ca2f1f333.PNG)
-
-Les Slaves sont enregistrés auprès du Master. Un client (un shell) peut soumettre une application
-Spark pour exécution auprès du Master (avec spark-submit) et le Master distribue cette exécution
-auprès des Slaves.
-
-
-
+The Slaves are registered with the Master. A client (a shell) can submit a Spark application for execution to the Master (using `spark-submit`), and the Master distributes the execution to the Slaves.
